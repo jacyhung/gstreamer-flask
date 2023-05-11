@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Record Video</title>
+     <script src="https://cdn.tailwindcss.com"></script>
+
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto max-w-md p-4">
+        <h1 class="text-3xl font-bold mb-4">Record Video</h1>
+        {% if recording %}
+        <div class="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md mb-4">
+            <div class="flex">
+                <div class="py-1"><svg class ="fill-current h-6 w-6 text-blue-500 mr-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M19.707 18.293l-6-6A.996.996 0 0 0 13 12V2a1 1 0 0 0-1-1H8a1 1 0 0 0-1 1v10a.996.996 0 0 0 .293.707l-6 6a.999.999 0 0 0 0 1.414l1.414 1.414a.999.999 0 0 0 1.414 0L7 14.414V>
+            <div>
+                <p class="font-bold">Status:</p>
+                 {% if recording_successful %}<p class="font-normal">Recording is in progress!</p>{% else %}<p class="font-normal">Camera operation failed, check camera! Click on "Stop Recording" and try again.</p>{% endif %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% if recording_successful2  %}
+        <div class="bg-blue-100 border-t-4 border-blue-500 rounded-b text-blue-900 px-4 py-3 shadow-md mb-4">
+            <div class="flex">
+            <div>
+                <p class="font-bold">Status:</p>
+                 <p>Success! Video saved to: {{file_path}}</p>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <form method="post" action="/record">
+        <input type="hidden" name="recording" value="{{ recording }}">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            {% if recording %}Stop Recording{% else %}Record{% endif %}
+        </button>
+</form>
+</div>
+</body>
+</html>
