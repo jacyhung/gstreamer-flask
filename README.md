@@ -11,7 +11,7 @@ v4l2-ctl -d /dev/videoX --get-fmt-video
 ```
 <i>replace "X" with your corresponding video input, which you can list using `ls /dev/video*`</i>
 
-Additionally, you may need to change the pixel format and video size in `format=NV16,width=3840,height=2160`, according to your camera. The Fujifilm X-T4 outputs in NV16 at 3840x2160 (Radxa Rock 5B HDMI-in does not support DCI [4096]).
+Additionally, you may need to change the <a href="https://www.kernel.org/doc/html/v5.0/media/uapi/v4l/yuv-formats.html">pixel format</a> and video size in `format=NV16,width=3840,height=2160`, according to your camera. The Fujifilm X-T4 outputs in NV16 at 3840x2160 (Radxa Rock 5B HDMI-in does not support DCI [4096]).
 
 You may also need to adjust the audio input source if you have multiple sources. Replace `alsasrc device=hw:4,0` with the correct hw identifier.
 
